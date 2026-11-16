@@ -1,8 +1,10 @@
 /data/
 /outputs/
+/results/
 /lightglue/weights/
 *-checkpoint.ipynb
 *.pth
+*.pt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

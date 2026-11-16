@@ -1,0 +1,83 @@
+{
+  "dataset": "megadepth1500",
+  "partition": "all",
+  "pairs": 1500,
+  "status": "complete",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "features": {
+    "max_keypoints": 512,
+    "resize": 640,
+    "extractor_hash": "49c3a3775a7bb2bf6a65e79ec647c55fc9ad58238b8c3dc678d3dc2eef88405b",
+    "torch": "2.9.1+cu128",
+    "origin": "center"
+  },
+  "backbone_hash": "e16c4bf636078a7e9e4a01cad5549ca5795e00051ea258baa49b99e4ef4ba46f",
+  "criterion": {
+    "min_correct": 20,
+    "min_precision": 0.8,
+    "hpatches_pixels": 3,
+    "megadepth_squared_epi": 0.0001
+  },
+  "timing_repeats": 3,
+  "warmup": 1,
+  "configurations": {
+    "CAR": {
+      "checkpoints": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "min_depth": 1,
+      "max_depth": 9,
+      "accept_threshold": 0.95,
+      "reject_usable_threshold": 0.1,
+      "reject_recoverable_threshold": 0.05,
+      "reject_min_depth": 5,
+      "rejection_patience": 2,
+      "min_matches": 20,
+      "geometry": "fundamental",
+      "geometry_layers": [
+        3,
+        7,
+        9
+      ],
+      "geometry_threshold": 3.0,
+      "geometry_max_matches": 256,
+      "geometry_max_iterations": 500,
+      "pruning": true,
+      "pruning_threshold": 0.1,
+      "pruning_min_keypoints": 64,
+      "pruning_start_depth": 3
+    }
+  },
+  "profiling": {
+    "enabled": true,
+    "repeats": 3,
+    "method": "Separate CAR pass; synchronized wall-clock stage boundaries",
+    "normal_latency_includes_profiling": false
+  },
+  "software": {
+    "python": "3.13.5",
+    "torch": "2.9.1+cu128",
+    "cuda": "12.8",
+    "opencv": "4.12.0",
+    "numpy": "2.2.6"
+  },
+  "pair_manifest_sha256": "8f7d80e04f7e8a20e294b9017a86714434652ece606235067c6748e7b7ab22e3",
+  "source_hashes": {
+    "experiments/car_prepare.py": "44aaad54d15fb63f2ceb69d6938c68c4af3903014d824f9e322eb7363e309e0f",
+    "experiments/car_metrics.py": "d5e5f11c653186dca5188854a48e807db353ec7d65cf8845fa7a599afed73f9f",
+    "experiments/car_evaluate.py": "850983d8921f86e673749eab57ea68d48a473616c5cb77a6fb47bd22aba80edc",
+    "experiments/car_report.py": "bf634cc51406070918a541869a3a85edf2c831375199fd8d08298c3def1a63f5",
+    "experiments/car_data.py": "3e8d97f3d38bc3637141f851aef00aea532be4eddba1c9fb4d1e760c61e9c32e",
+    "lightglue/car_match.py": "bcb91a9a8d7a7062178b706f146d0d92c64b4c9dfcfd480e722b0e7b266d696f",
+    "lightglue/lightglue.py": "a55148a66f40407f3e01474ffacf714b80b9ae34e5ea1b4d6165b1f6eb2437ac",
+    "experiments/hpatches_metrics.py": "ca58dd7a7438e60002a4c6108c2aea99199384fc3796b895bf64fe52a7478dca"
+  },
+  "archived_from": "results/Megadepth/car_pruned_01",
+  "original_manifest_sha256": "7c93a25b7d684d085688981c0ce4bcdf6de31227daf791c9beef3595d0fa082b",
+  "archive_note": "Selected metadata and unchanged saved outputs; no new evaluation. Omitted image paths and per-image hashes."
+}

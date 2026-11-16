@@ -3,8 +3,13 @@ on:
   push:
     branches:
       - main
+      - master
     paths:
-      - '*.py'
+      - '**.py'
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - '.flake8'
+      - '.github/workflows/code-quality.yml'
   pull_request:
     types: [ assigned, opened, synchronize, reopened ]
 jobs:
@@ -22,3 +27,7 @@ jobs:
       - run: python -m flake8 .
       - run: python -m isort . --check-only --diff
       - run: python -m black . --check --diff
+      - name: Synthetic unit tests (no datasets or benchmarks)
+        run: python -m unittest discover -s tests -v
+        env:
+          MPLBACKEND: Agg
